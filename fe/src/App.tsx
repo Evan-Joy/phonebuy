@@ -3,7 +3,6 @@ import './App.css';
 import { useRoutes } from 'react-router-dom';
 import loadable from '@loadable/component';
 import LoadingTopPageFallBack from './components/common/LoadingTopPageFallback';
-import SelectLang from './components/common/SelectLang';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 
@@ -51,7 +50,6 @@ const App: React.FC = () => {
 
   return (
     <div className='p-1'>
-      <SelectLang />
       <ToastContainer
         position="bottom-left"
         autoClose={3000}
