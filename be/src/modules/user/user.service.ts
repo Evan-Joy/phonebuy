@@ -46,7 +46,10 @@ export class UserService {
         return task;
       }
       if (!find.isActive) newUser = find;
-      else newUser = this.userRepo.create();
+      // else newUser = this.userRepo.create();
+    }
+    if (!newUser) {
+      newUser = this.userRepo.create();
     }
 
     // add new user;

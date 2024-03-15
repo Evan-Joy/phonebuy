@@ -1,0 +1,15 @@
+.cate-menu{
+  border: 1px solid red;
+  padding: 10px;
+}
+.menu-item{
+  margin: 0 0px;
+  padding: 10px 20px;
+}
+.cate-menu > .menu-item:hover{
+  background-color:blue;
+  color: white;
+  transition: 1s;
+  border-radius: 7px;
+  cursor: pointer;
+}

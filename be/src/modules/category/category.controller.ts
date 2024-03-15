@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, UseGuards, Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { RolerUser } from 'src/common/Enums';
@@ -15,7 +15,10 @@ export class CategoryController {
   @Post()
   @ApiOperation({summary: 'Create new category role [ ADMIN ]'})
   @UseGuards(AuthGuard(), new RolesGaurd(RolerUser.ADMIN))
-  create(@Body() createCategoryDto: CreateCategoryDto) {
+  create(@Req() req: any, @Body() createCategoryDto: CreateCategoryDto) {
+    const user = req.user; 
+    console.log(user);
+    
     return this.categoryService.create(createCategoryDto);
   }
 

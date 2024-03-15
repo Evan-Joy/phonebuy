@@ -1,7 +1,12 @@
 const Apis = {
-  API_HOST: 'http://myhufier.ddns.net/api',
+  API_HOST: 'http://localhost:7689',
   API_TAILER: {
-    GET_POSTS: '/post/filter/v1',
+    AUTH: {
+      ROOT: '/auth',
+    },
+    CATEGORY: {
+      ROOT: '/category',
+    },
   }
 }
 
