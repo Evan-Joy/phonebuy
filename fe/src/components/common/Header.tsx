@@ -1,6 +1,9 @@
 import { Avatar } from "antd";
+import { useDispatch } from "react-redux";
+import { userTyping } from "../../app-reducers/FilterProductReducer";
 
 const Header = () => {
+  const dispatch = useDispatch();
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -28,7 +31,7 @@ const Header = () => {
               </ul>
             </li>
             <li className="nav-item">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <input onChange={(e) => dispatch(userTyping({ productName: e.target.value }))} className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             </li>
           </ul>
           <form className="d-flex" role="search">

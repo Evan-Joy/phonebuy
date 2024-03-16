@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Put, Param, Delete, Query } from '@nestjs/common';
 import { ProductService } from './product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CateFilter } from '../category/dto/cate-filter.dto';
 
 @Controller('product')
 @ApiTags('PRODUCT')
@@ -17,8 +18,8 @@ export class ProductController {
 
   @Get()
   @ApiOperation({summary:'Get list product'})
-  findAll() {
-    return this.productService.findAll();
+  findAll(@Query() query: CateFilter) {
+    return this.productService.findAll(query);
   }
 
   @Get(':id')

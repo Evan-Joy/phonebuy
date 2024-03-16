@@ -8,6 +8,7 @@ import { TaskRes } from 'src/common/Classess';
 import { PublicModules } from 'src/common/PublicModules';
 import * as Dics from 'src/common/MyDictionary.json';
 import { plainToClass } from 'class-transformer';
+import { CateFilter } from '../category/dto/cate-filter.dto';
 
 @Injectable()
 export class ProductService {
@@ -61,11 +62,20 @@ export class ProductService {
     return task;
   }
 
-  async findAll() {
+  async findAll(query :CateFilter) {
     //declare a variable to hold response.
     let task: TaskRes = null;
     //find all
-    const find = await this.prodRepo.find();
+    let qb = this.prodRepo
+    .createQueryBuilder('prod')
+    .innerJoin('prod.category','cate');
+
+    if (String(query.categoryId) !== 'undefined')
+      qb = qb.where('cate.id = :thamsogicungduoc',{thamsogicungduoc: query.categoryId});
+    if(query.name.length>=1 && query.name !=='undefined'){
+      qb = qb.andWhere('LOWER(prod.title) like LOWER(:name)',{name: `%${query.name}%`}) 
+    }
+    const find = await qb.getMany();
     //Make notification 
     task = PublicModules.fun_makeResFoundSucc(find);
     //return res

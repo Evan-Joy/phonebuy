@@ -13,3 +13,9 @@
   border-radius: 7px;
   cursor: pointer;
 }
+
+.menu-item.active{
+    background-color: blue;
+    color: white;
+    border-radius: 7px;
+}

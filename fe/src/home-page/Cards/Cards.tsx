@@ -1,16 +1,22 @@
 import { useEffect, useState } from 'react';
 import './Cards.css';
 import { Apis, Funcs, UI } from '../../utils';
+import { useSelector } from 'react-redux';
+import { selectFilterProduct } from '../../app-reducers/FilterProductReducer';
 
 const Cards = () => {
   const [product, setProduct] = useState<any[]>([]);
+  const selectFilter = useSelector(selectFilterProduct);
+
+  console.log(selectFilter);
+
 
   useEffect(() => {
     loadProduct();
-  }, [])
+  }, [selectFilter])//[selectFilter]
 
   const loadProduct = async () => {
-    const dataRes = await Funcs.fun_get(Apis.API_HOST + Apis.API_TAILER.PRODUCT.ROOT);
+    const dataRes = await Funcs.fun_get(Apis.API_HOST + Apis.API_TAILER.PRODUCT.ROOT + `?categoryId=${selectFilter.categoryId}&name=${selectFilter.productName}`);//?categoryId = 3&name=5S
     if (!dataRes.success) {
       UI.toastError(dataRes.message);
       return;
