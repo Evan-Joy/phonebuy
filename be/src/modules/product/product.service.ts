@@ -61,8 +61,15 @@ export class ProductService {
     return task;
   }
 
-  findAll() {
-    return `This action returns all product`;
+  async findAll() {
+    //declare a variable to hold response.
+    let task: TaskRes = null;
+    //find all
+    const find = await this.prodRepo.find();
+    //Make notification 
+    task = PublicModules.fun_makeResFoundSucc(find);
+    //return res
+    return task;
   }
 
   findOne(id: number) {

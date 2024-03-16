@@ -7,6 +7,9 @@ const Apis = {
     CATEGORY: {
       ROOT: '/category',
     },
+    PRODUCT: {
+      ROOT: '/product',
+    },
   }
 }
 

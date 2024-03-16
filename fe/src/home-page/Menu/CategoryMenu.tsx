@@ -22,7 +22,7 @@ const CategoryMenu = () => {
   }
 
   return (
-    <div className="cate-menu">
+    <div className="cate-menu mb-5">
       {cateMenu.map((v, k) => {
         return (
           <span key={k} className="menu-item">{v.name}</span>
