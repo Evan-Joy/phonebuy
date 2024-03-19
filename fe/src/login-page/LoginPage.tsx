@@ -38,6 +38,8 @@ const LoginPage: React.FC = () => {
 
     //save user login into localstorage
     Funcs.fun_saveUserLogin(dataRes.result.user);
+    // console.log(dataRes.result);
+
     //navigate to home page.
     navigation('/home');
 
@@ -51,7 +53,7 @@ const LoginPage: React.FC = () => {
           <h2 className='text-center text-muted'>Login</h2>
           <form onSubmit={(event) => handleLogin(event)} className="row g-3 needs-validation" noValidate>
             <div className="col-12">
-              <label htmlFor="validationCustom03" className="form-label">
+              <label htmlFor="validationCustom02" className="form-label">
                 Email
               </label>
               <input onChange={(e) => setEmail(e.target.value)}

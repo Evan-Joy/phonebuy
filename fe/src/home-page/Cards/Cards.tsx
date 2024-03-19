@@ -3,6 +3,7 @@ import './Cards.css';
 import { Apis, Funcs, UI } from '../../utils';
 import { useSelector } from 'react-redux';
 import { selectFilterProduct } from '../../app-reducers/FilterProductReducer';
+import { LOCAL_STORAGE_KEYs } from '../../utils/Consts';
 
 const Cards = () => {
   const [product, setProduct] = useState<any[]>([]);
@@ -25,7 +26,48 @@ const Cards = () => {
     console.log(dataRes.result);
 
   }
+  //log product when clicked
+  //save to localstorage
 
+  //check array is null
+  //if null push object to array
+  // if not null check object is already exists
+  //if object is already exist plus quantity.
+  const handleBtnClick = (v: any) => {
+    // console.log(v);
+    //get item from local
+    const cart = Funcs.fun_getItemFromLocalStorage(LOCAL_STORAGE_KEYs.CART_ITEMS);
+    if (cart) {
+      const cartArray = JSON.parse(cart);
+      console.log(cartArray);
+      const findIndex = cartArray.findIndex((value: any) => value.product.id === v.id)
+      if (findIndex === -1) {
+        cartArray.push({
+          product: v,
+          quantity: 1,
+        })
+      } else {
+        cartArray[findIndex].quantity += 1;
+      }
+
+
+      Funcs.fun_saveProductToLocalStorage(cartArray)
+    }
+    else {
+      Funcs.fun_saveProductToLocalStorage([{
+        product: v,
+        quantity: 1
+      }])
+    }
+
+
+
+    // Funcs.fun_saveProductToLocalStorage([{
+    //   product: v,
+    //   quantity: 1
+    // }]);
+
+  }
   return (
     <div className="container">
       <div className="row">
@@ -44,7 +86,7 @@ const Cards = () => {
                       Ab amet vitae doloremque consequatur commodi culpa dolores ullam.
                     </p>
                     <p>${v.price}</p>
-                    <a href="#" className="btn btn-primary btn-buy">
+                    <a onClick={() => handleBtnClick(v)} href="#" className="btn btn-primary btn-buy">
                       Buy Now
                     </a>
                   </div>

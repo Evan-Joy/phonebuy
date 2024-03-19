@@ -1,6 +1,7 @@
-import { Avatar } from "antd";
+import { Avatar, Space } from "antd";
 import { useDispatch } from "react-redux";
 import { userTyping } from "../../app-reducers/FilterProductReducer";
+import Cart from "./Cart";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,10 @@ const Header = () => {
             </li>
           </ul>
           <form className="d-flex" role="search">
-            <Avatar>Phuc</Avatar>
+            <Space direction='horizontal' size={16}>
+              <Cart />
+              <Avatar>Phuc</Avatar>
+            </Space>
           </form>
         </div>
       </div>

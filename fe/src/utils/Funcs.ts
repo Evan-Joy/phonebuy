@@ -97,7 +97,23 @@ class Funcs {
   static fun_saveUserLogin = (user: any)=>{
     localStorage.setItem(LOCAL_STORAGE_KEYs.USER_LOGIN,JSON.stringify(user));
   }
-
+  static fun_saveProductToLocalStorage = (product:any)=>{
+    localStorage.setItem(LOCAL_STORAGE_KEYs.CART_ITEMS,JSON.stringify(product));
+  }
+  static fun_getItemFromLocalStorage = (key:string)=>{
+    return localStorage.getItem(key);
+  }
+  static count_QuantityProduct = ()=>{
+    const cart =Funcs.fun_getItemFromLocalStorage(LOCAL_STORAGE_KEYs.CART_ITEMS);
+    if(!cart)
+    return 0;
+    const newCart = JSON.parse(cart);
+    let tong =0;
+    for(let i =0 ; i< newCart.length;i++){
+      tong += newCart[i].quantity;
+    }
+    return tong;
+  }
 }
 
 export default Funcs;
