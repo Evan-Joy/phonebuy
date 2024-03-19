@@ -5,6 +5,7 @@ import loadable from '@loadable/component';
 import LoadingTopPageFallBack from './components/common/LoadingTopPageFallback';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import SignUpPage from './signup-page/SignUp';
 
 const PageNotFoundView = loadable(() => import('./other-pages/PageNotFoundView'), {
   fallback: <LoadingTopPageFallBack />,
@@ -42,6 +43,11 @@ const App: React.FC = () => {
     {
       path: '/login',
       element: <LoginPage />,
+      children: [],
+    },
+    {
+      path: '/signup',
+      element: <SignUpPage />,
       children: [],
     },
   ];

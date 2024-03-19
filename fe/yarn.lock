@@ -2023,6 +2023,11 @@
   dependencies:
     "@types/react" "*"
 
+"@types/loadjs@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@types/loadjs/-/loadjs-4.0.4.tgz#87931396f285acdbc9bf7778793bd4a98037a64d"
+  integrity sha512-IrO82vQKb37H9R+CJYoKTJBlMcIcSCA64ZPIBrLScH2vHMgXLnXtLc76PyKKzdbkj/lRLIhoH+fFAZ0UvIP5Dw==
+
 "@types/mime@*":
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-3.0.1.tgz#5f8f2bca0a5863cb69bc0b0acd88c96cb1d4ae10"
@@ -6098,6 +6103,11 @@ loader-utils@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-3.2.0.tgz#bcecc51a7898bee7473d4bc6b845b23af8304d4f"
   integrity sha512-HVl9ZqccQihZ7JM85dco1MvO9G+ONvxoGa9rkhzFsneGLKSUg1gJf9bWzhRhcvm2qChhWpebQhP44qxjKIUCaQ==
+
+loadjs@^4.3.0-rc1:
+  version "4.3.0-rc1"
+  resolved "https://registry.yarnpkg.com/loadjs/-/loadjs-4.3.0-rc1.tgz#c0c5f89bcbf52d5dc9e6f6d6d3b6499c61f47894"
+  integrity sha512-GvSFQ3YXbeUJAPYzYBjIYIWk6vKID4XYspMfZ0Nq4eJu0TFiD+SlhSUiQ0/gT7t3G/amHVPVrEVcbpda0lF2PA==
 
 locate-path@^2.0.0:
   version "2.0.0"

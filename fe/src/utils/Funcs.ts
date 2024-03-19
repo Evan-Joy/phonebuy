@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { IDataAxiosResponse } from "./Interfaces";
+import { LOCAL_STORAGE_KEYs } from './Consts';
 
 let numberLogId = 0;
 
@@ -93,6 +94,10 @@ class Funcs {
         });
     });
   };
+  static fun_saveUserLogin = (user: any)=>{
+    localStorage.setItem(LOCAL_STORAGE_KEYs.USER_LOGIN,JSON.stringify(user));
+  }
+
 }
 
 export default Funcs;

@@ -4,6 +4,9 @@ const Apis = {
     AUTH: {
       ROOT: '/auth',
     },
+    USER: {
+      ROOT: '/user',
+    },
     CATEGORY: {
       ROOT: '/category',
     },

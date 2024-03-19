@@ -67,8 +67,8 @@ export class ProductService {
     let task: TaskRes = null;
     //find all
     let qb = this.prodRepo
-    .createQueryBuilder('prod')
-    .innerJoin('prod.category','cate');
+    .createQueryBuilder('prod')// Create a new query builder for the 'prod' entity
+    .innerJoin('prod.category','cate');// Perform an inner join with the 'category' table using 'cate' as an alias
 
     if (String(query.categoryId) !== 'undefined')
       qb = qb.where('cate.id = :thamsogicungduoc',{thamsogicungduoc: query.categoryId});
