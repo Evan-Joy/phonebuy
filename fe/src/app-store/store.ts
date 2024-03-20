@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../example-redux/counter/counterSlice';
 import { SessionUserReducer } from "../app-reducers";
 import FilterProductReducer from '../app-reducers/FilterProductReducer';
+import CommonReducer from '../app-reducers/CommonReducer';
 
 
 export const store = configureStore({
@@ -9,6 +10,7 @@ export const store = configureStore({
     counter: counterReducer,
     sessionUser: SessionUserReducer,
     filterProduct: FilterProductReducer,
+    commonReducer: CommonReducer,
   },
 });
 

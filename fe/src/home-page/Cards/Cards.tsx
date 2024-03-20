@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
 import './Cards.css';
 import { Apis, Funcs, UI } from '../../utils';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectFilterProduct } from '../../app-reducers/FilterProductReducer';
 import { LOCAL_STORAGE_KEYs } from '../../utils/Consts';
+import { updateQuantity } from '../../app-reducers/CommonReducer';
 
 const Cards = () => {
   const [product, setProduct] = useState<any[]>([]);
   const selectFilter = useSelector(selectFilterProduct);
+  const dispatch = useDispatch();
 
   console.log(selectFilter);
 
@@ -35,31 +37,40 @@ const Cards = () => {
   //if object is already exist plus quantity.
   const handleBtnClick = (v: any) => {
     // console.log(v);
-    //get item from local
+    //get cart from local
     const cart = Funcs.fun_getItemFromLocalStorage(LOCAL_STORAGE_KEYs.CART_ITEMS);
+    //if cart is string
     if (cart) {
+      //convert string into array object
       const cartArray = JSON.parse(cart);
       console.log(cartArray);
+      //find object in array object
       const findIndex = cartArray.findIndex((value: any) => value.product.id === v.id)
+      //if not found object in array object
       if (findIndex === -1) {
+        //push object into array object
         cartArray.push({
           product: v,
           quantity: 1,
         })
-      } else {
+
+      } //if found increase quantity 1
+      else {
         cartArray[findIndex].quantity += 1;
       }
 
 
       Funcs.fun_saveProductToLocalStorage(cartArray)
-    }
+
+    }//if cart is null
     else {
       Funcs.fun_saveProductToLocalStorage([{
         product: v,
         quantity: 1
       }])
-    }
 
+    }
+    dispatch(updateQuantity())
 
 
     // Funcs.fun_saveProductToLocalStorage([{
