@@ -37,6 +37,7 @@ const Cards = () => {
   //if object is already exist plus quantity.
   const handleBtnClick = (v: any) => {
     // console.log(v);
+    //check array object isNull?
     //get cart from local
     const cart = Funcs.fun_getItemFromLocalStorage(LOCAL_STORAGE_KEYs.CART_ITEMS);
     //if cart is string
@@ -46,6 +47,7 @@ const Cards = () => {
       console.log(cartArray);
       //find object in array object
       const findIndex = cartArray.findIndex((value: any) => value.product.id === v.id)
+      //check object isAlready exists?
       //if not found object in array object
       if (findIndex === -1) {
         //push object into array object

@@ -10,6 +10,7 @@ import { ChoVayDto } from './dto/chovay.dto';
 import { TatToanDto } from './dto/tattoan.dto';
 import { RolerUser } from 'src/common/Enums';
 import { ChoVayQuery } from './dto/chovay-query.dto';
+import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @Injectable()
 export class UserService {
@@ -141,6 +142,24 @@ export class UserService {
     await find.hashPassword();
     find = await this.userRepo.save(find);
 
+    return task;
+  }
+
+  async updateUserProfile(user: User, dto: UpdateProfileDto) {
+    let task: TaskRes = null;
+    // check user exists
+    let find = await this.userRepo.findOne({where: {userName: dto.userName}});
+    if (find) {
+      task = PublicModules.fun_makeResError(null, 'Please choose another userName!');
+      return task;
+    }
+    //find by id
+    const _user = await this.userRepo.findOne({where: {id: user.id}});
+    _user.displayName = dto.fullName;
+    _user.userName = dto.userName;
+    const result = await this.userRepo.save(_user);
+
+    task = PublicModules.fun_makeResUpdateSucc(result);
     return task;
   }
 }

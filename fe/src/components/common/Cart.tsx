@@ -31,7 +31,7 @@ const Cart = () => {
     const cart = Funcs.fun_getItemFromLocalStorage(LOCAL_STORAGE_KEYs.CART_ITEMS);
     //Check if no such cart
     if (!cart) {
-      UI.toastWarning('noting');
+      UI.toastWarning('nothing');
       return;
     }
     const newCart = JSON.parse(cart);
@@ -93,7 +93,7 @@ const Cart = () => {
     }
     //If you want to remove element at position x, use:
     //someArray.splice(x, 1);
-    console.log({ findIndex });
+    // console.log({ findIndex });
 
     const updateCart = newCart.filter((value: any) => value.product.id !== productId)
     Funcs.fun_saveProductToLocalStorage(updateCart);
@@ -117,7 +117,7 @@ const Cart = () => {
   const handleCheckboxChecked = (isChecked: boolean, v: any) => {
     let total = 0;
 
-    // doan nay la de su ly loi checked
+    // handle checked error
     setCheckedsWithId(v.product.id, isChecked);
 
     if (isChecked) {
@@ -133,12 +133,12 @@ const Cart = () => {
     //check cartitem 
     //if cartitem is null return cartitem is null
     if (!cartItem) {
-      return <div>Gio hang rong!</div>
+      return <div>Shoping cart is empty!</div>
     }
     //convert cartitem into cart arrayobject
     const newCartItem = JSON.parse(cartItem);
     //do for
-    console.log(newCartItem);
+    // console.log(newCartItem);
 
     return newCartItem.map((v: any, k: number) => {
       return (

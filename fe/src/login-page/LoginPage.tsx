@@ -3,6 +3,7 @@ import './LoginPage.css';
 import loadjs from 'loadjs';
 import { Apis, Funcs, UI } from '../utils';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 
 const LoginPage: React.FC = () => {
@@ -89,7 +90,7 @@ const LoginPage: React.FC = () => {
                 />
                 <label className="form-check-label" htmlFor="invalidCheck">
                   Agree to terms and conditions
-                </label>
+                </label>&nbsp;<span><Link to={'/signup'}>Sign Up</Link></span>
                 <div className="invalid-feedback">You must agree before submitting.</div>
               </div>
             </div>

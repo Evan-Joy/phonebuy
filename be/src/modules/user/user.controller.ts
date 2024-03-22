@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, UseGuards, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { RecoverAccountPasswordDto } from './dto/recover-pass.dto';
+import { AuthGuard } from '@nestjs/passport';
+import { UpdateProfileDto } from './dto/update-profile.dto';
 
 @Controller('user')
 @ApiTags('USER')
@@ -37,5 +39,12 @@ export class UserController {
   @ApiOperation({ summary: 'Active user account' })
   recoverAccountPassword(@Body() dto: RecoverAccountPasswordDto) {
     return this.userService.recoverAccountPassword(dto);
+  }
+
+  @Put('/profile')
+  @ApiOperation({ summary: 'User update profile' })
+  @UseGuards(AuthGuard())
+  updateUserProfile(@Req() req: any, @Body() dto: UpdateProfileDto) {
+    return this.userService.updateUserProfile(req.user, dto);
   }
 }

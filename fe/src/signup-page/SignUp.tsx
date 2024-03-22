@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './SignUp.css';
 import { Apis, Funcs, UI } from '../utils';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const SignUpPage = () => {
   const [email, setEmail] = useState<string>('');
@@ -108,7 +109,7 @@ const SignUpPage = () => {
                 />
                 <label className="form-check-label" htmlFor="invalidCheck">
                   Agree to terms and conditions
-                </label>
+                </label>&nbsp;<span><Link to={'/login'} >Login</Link></span>
                 <div className="invalid-feedback">You must agree before submitting.</div>
               </div>
             </div>

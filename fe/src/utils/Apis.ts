@@ -6,6 +6,7 @@ const Apis = {
     },
     USER: {
       ROOT: '/user',
+      UPDATE_PROFILE: '/user/profile'
     },
     CATEGORY: {
       ROOT: '/category',

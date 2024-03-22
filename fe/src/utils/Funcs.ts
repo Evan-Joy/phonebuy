@@ -1,6 +1,10 @@
-import axios from 'axios';
+import defautlAxios from 'axios';
 import { IDataAxiosResponse } from "./Interfaces";
 import { LOCAL_STORAGE_KEYs } from './Consts';
+
+const axios = defautlAxios.create({
+  withCredentials: true,
+});
 
 let numberLogId = 0;
 
