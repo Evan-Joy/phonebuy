@@ -6,6 +6,7 @@ import LoadingTopPageFallBack from './components/common/LoadingTopPageFallback';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
 import SignUpPage from './signup-page/SignUp';
+import ActiveAccount from './other-pages/ActiveAccount';
 
 
 const PageNotFoundView = loadable(() => import('./other-pages/PageNotFoundView'), {
@@ -51,11 +52,11 @@ const App: React.FC = () => {
       element: <SignUpPage />,
       children: [],
     },
-    // {
-    //   path: '/profile',
-    //   element: <Profile />,
-    //   children: [],
-    // },
+    {
+      path: '/active-account',
+      element: <ActiveAccount />,
+      children: [],
+    },
   ];
 
   const routing = useRoutes(listRoute);

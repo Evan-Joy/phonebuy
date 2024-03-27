@@ -38,7 +38,7 @@ const SignUpPage = () => {
       UI.toastError(dataRes.message);
       return;
     }
-    UI.toastSuccess("Sign Up successfully!")
+    UI.toastSuccess("Please active your acccount from gmail")
     navigation('/login');
   }
 

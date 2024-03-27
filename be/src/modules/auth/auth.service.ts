@@ -46,7 +46,7 @@ export class AuthService {
       // 10 min
       `${10 * 60}s`
     );
-    const activeLink = `${process.env.APP_FRONT_END}/active-account/${tokenActive}`;
+    const activeLink = `${process.env.APP_FRONT_END}/active-account?token=${tokenActive}`;
     const html = ActiveAccountTemplate.newInstance().getTemplate({
       activeLink,
     });
